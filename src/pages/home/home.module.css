@@ -1,0 +1,32 @@
+.container{
+    width: 100%;
+    height: auto;
+}
+
+.top-10{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+    height: 500px;
+    width: 100%;
+    overflow: hidden;
+
+    transition: transform 0.5s ease;
+    transform: translate( var(--translation),0);
+}
+
+.container h1{
+    color: var(--text);
+}
+
+.container li:hover{
+    background-color: var(--purple);
+
+    transform: scale(1.5,1.5);
+}
+
+
+.top{
+    transform: scale(1.5,1.5);
+}

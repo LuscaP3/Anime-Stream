@@ -1,0 +1,26 @@
+:root {
+  --background: #202122;
+  --bg1: #454647;
+  --bg2: #1a1b1b;
+
+  --border: #535557;
+  --lightBorder: #676e79;
+  --text: #bfc3c7;
+  --subtext: #9fa2a5;
+  --purple: #a977b8;
+
+  --borderProgress: 90deg;
+}
+
+body{
+  background-color: var(--background);
+
+  margin: 0;
+  padding: 0;
+}
+
+
+.app{
+  padding-left: 5%;
+  padding-right: 5%;
+}
