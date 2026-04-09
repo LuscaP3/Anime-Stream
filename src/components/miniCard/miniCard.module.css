@@ -1,0 +1,48 @@
+:root{
+    --opct: 0;
+}
+
+.mini-card{
+    position: relative;
+
+    height: fit-content;
+
+    padding: 0;
+    overflow: hidden;
+
+    border-radius: 5px;
+    border: none;
+    outline: none;
+
+}
+
+.mini-card::after{
+    position: absolute;
+    content: '';
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background: linear-gradient(0deg,rgba(0, 0, 0, 0.86) 0%, rgba(255, 255, 255, 0) 48%);
+}
+
+.mini-card img{
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+.title{
+    position: absolute;
+
+    text-align: center;
+
+    z-index: 1;
+    bottom: 0;
+
+    opacity: 80%;
+}

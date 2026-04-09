@@ -41,7 +41,8 @@ function Home(){
                 </Carousel1>
                 }
             </div>
-
+            
+            <h1 className = {styles.description}>{'| Most Popular'}</h1>
             { mostPopular && 
                 <Carousel2 gap = {15}>
                     {mostPopular.map( (element, index) => (<Card key = {index} anime = {element}/>))}

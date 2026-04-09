@@ -16,6 +16,12 @@
     transform: translate( var(--translation),0);
 }
 
+.most-popular{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap; /* ISSO resolve o problema */
+}
+
 .container h1{
     color: var(--text);
 }
@@ -26,7 +32,44 @@
     transform: scale(1.5,1.5);
 }
 
-
 .top{
     transform: scale(1.5,1.5);
 }
+
+.episodes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    align-items: stretch;
+
+    
+}
+
+.cards-container{
+    margin: 0.25em;
+    width: 49%;
+}
+
+.card-wrapper{
+    display: flex;
+    flex-direction: row;
+
+    gap: 1em;
+
+    border-radius: 10px;
+
+    width: 100%;
+}
+
+.card-wrapper:hover{
+    background-color: var(--bg1);
+}
+
+.card-image{
+    display: block;
+
+    height: fit-content;
+    width: 15%;
+}
+

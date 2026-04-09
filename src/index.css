@@ -8,6 +8,9 @@
   --text: #bfc3c7;
   --subtext: #9fa2a5;
   --purple: #a977b8;
+  --blue: #4855ce;
+  --red: #ce4848;
+  --lightGreen: #82c487;
 
   --borderProgress: 90deg;
 }
@@ -19,8 +22,33 @@ body{
   padding: 0;
 }
 
+p, h1, h2, h3{
+  color: var(--text);
+}
+
 
 .app{
   padding-left: 5%;
   padding-right: 5%;
+}
+
+::-webkit-scrollbar {
+  width: 5px; /* width of vertical scrollbar */
+  height: 12px; /* height of horizontal scrollbar */
+}
+
+/* Style the track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Style the thumb (draggable handle) */
+::-webkit-scrollbar-thumb {
+  background: var(--bg1);
+  border-radius: 5px;
+}
+
+/* Add a hover effect to the thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

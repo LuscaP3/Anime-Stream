@@ -1,0 +1,45 @@
+.episodes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    align-items: stretch;
+
+    
+}
+
+.cards-container{
+    margin: 0.25em;
+    width: 49%;
+}
+
+.card-wrapper{
+    display: flex;
+    flex-direction: row;
+
+    gap: 1em;
+
+    border-radius: 10px;
+
+    width: 100%;
+}
+
+.card-wrapper h3{
+    margin: 0;
+}
+
+.card-wrapper p{
+    
+}
+
+.card-wrapper:hover{
+    background-color: var(--bg1);
+}
+
+.card-image{
+    display: block;
+
+    height: fit-content;
+    width: 15%;
+    margin: 0.25em;
+}

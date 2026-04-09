@@ -70,7 +70,7 @@ function Card({anime}){
                     <div className = {styles["row-display"]}>
                         { animeRef.season && <p className = {styles.description}>{`${utils.strFormat(animeRef.season)}`}</p>}
                         { animeRef.year && <p className = {styles.description}>{`${animeRef.year}`}</p>}
-                        <p className = {styles.description} style = {{"opacity":"70%"}}>{animeRef.year ? `•` : ''}</p>
+                        { (animeRef.year) && <p className = {styles.description} style = {{"opacity":"70%"}}>{`•`}</p>}
                         { animeRef.episodes && <p className = {styles.description}>{animeRef.type == 'TV' || animeRef.type == 'ONA'? `${animeRef.episodes} Episodes` : animeRef.type}</p>}
                     </div>
 

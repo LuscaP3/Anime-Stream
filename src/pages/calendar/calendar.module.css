@@ -1,0 +1,125 @@
+.container{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.calendar-wrapper{
+    width: fit-content;
+}
+
+.calendar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 0;
+    border-radius: 15px;
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    gap: 0.125em;
+
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.weekday{
+    text-align: center;
+    background-color: var(--bg2);
+    margin: 0;
+
+    padding: 0.5em;
+}
+
+.card-wrapper{
+    display: flex;
+
+    margin: 0.5em;
+
+    max-width: 150px;
+
+    border-radius: 5px;
+    padding-bottom: 2px;
+
+    transition: 0.5s ease;
+
+    background-color: var(--color);
+    box-shadow: 0px 13px 38px -20px #ffffff00;
+}
+
+.card-wrapper:hover{
+    background-color: var(--color);
+    box-shadow: 0px 13px 38px -20px var(--color);
+    transform: translate(0, -10px);
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigate{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    height: fit-content;
+}
+
+.page-button{
+    display: flex;
+    align-items: center;
+
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-size: larger;
+
+    background-color: transparent;
+
+    padding-left: 0;
+    padding-right: 0;
+
+    color: var(--text);
+    background-color: var(--bg1);
+
+    transition: transform 0.5s ease;
+}
+
+.page-button:hover{
+    transform: scale(1.2, 1.2);
+}
+
+.page{
+    background-color: var(--bg1);
+
+    border-radius: 5px;
+    border: none;
+    outline: none;
+
+    color: var(--text);
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    transition: 0.25s ease;
+}
+
+.page:hover{
+    background-color: var(--blue);
+}
+
+.current-page{
+    background-color: var(--blue);
+    transform: scale(1.1,1.1);
+}

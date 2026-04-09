@@ -1,0 +1,44 @@
+.episode{
+    display: flex;
+    flex-direction: row;
+
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    padding: 0.25em;
+
+
+    width: 100%;
+}
+
+.episode:hover{
+    background-color: var(--bg1);
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    text-align: left;
+    width: 80%;
+    gap: 0.5em;
+}
+
+.title h2{
+    border-right: 1px solid var(--border);
+    margin: 0.5em;
+    padding-right: 0.5em;
+}
+
+img{
+    display: block;
+
+    width: 20%;
+    height: auto;
+
+    border-radius: 8px;
+}
+

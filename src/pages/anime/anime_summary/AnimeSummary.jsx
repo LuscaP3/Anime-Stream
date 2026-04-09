@@ -1,5 +1,5 @@
 import styles from './animeSummary.module.css'
-import * as utils from '../../services/utils.js'
+import * as utils from '../../../services/utils.js'
 
 function AnimeSummary({anime}){
 
@@ -12,15 +12,15 @@ function AnimeSummary({anime}){
                 <div className = {styles.right}>
                     <header className = {styles.header}>
                     <h2 className = {[styles.title, styles.t].join(' ')}> {anime.title} </h2>
-                    <p className = {[styles.airing, styles.t].join(' ')} style = { anime.airing ? {'--color': '#82c487'} : {'--color': 'var(--text)'}}> {anime.airing ? 'Airing' : 'Finished'} </p>
+                    <p className = {[styles.airing, styles.t].join(' ')} style = { anime.airing ? {'--color': 'var(--lightGreen)'} : {'--color': 'var(--text)'}}> {anime.status} </p>
                 </header>
                 
                     <div className = {styles['row-display']}>
                         { anime.rank && <div className = {styles['rank-wrapper']}> <p className = {[styles.t, styles.rank].join(' ')}>{`#${anime.rank}`}</p> <p className = {styles.t}>Ranking</p></div>}
 
-                        {anime.season && <p>{`${utils.strFormat(anime.season)}`}</p>}
-                        {anime.year && <p>{`${anime.year}`}</p>}
-                        {anime.episodes &&<p style = {{"opacity":"70%"}}>{anime.year ? `•` : ''}</p>}
+                        {anime.season   && <p>{`${utils.strFormat(anime.season)}`}</p>}
+                        {anime.year     && <p>{`${anime.year}`}</p>}
+                        {anime.episodes && <p style = {{"opacity":"70%"}}>{anime.year ? `•` : ''}</p>}
                         {anime.episodes && <p>{anime.type == 'TV' || anime.type == 'ONA'? `${anime.episodes} Episodes` : anime.type}</p>}
                     </div>
 

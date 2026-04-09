@@ -26,6 +26,5 @@ Algumas funcionalidades estão incompletas ou sofrer podem alterações.
 
 - ⚛️ React
 - ⚡ Vite
-- 📶 Axios
 
 ---

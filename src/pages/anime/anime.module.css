@@ -1,7 +1,35 @@
 .container{
-    width: 100%
+    width: 100%;
 
+    display: flex;
+    flex-direction: row;
+
+    gap: 3em;
 }
+
+.anime{
+    width: 65%;
+}
+
+.episode{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    width: 35%;
+    height: 85vh;
+
+    overflow: hidden;
+    gap: 1em;
+}
+
+.episode-list{
+    position: relative;
+    overflow-y: auto;
+
+    gap: 0.5em;
+}
+
 
 .description{
     color: var(--text);
