@@ -9,6 +9,9 @@ Aqui você poderá descobrir, pesquisar e acompanhar seus animes favoritos de fo
 
 > ⚠️ **Este projeto ainda está em desenvolvimento!**
 
+ **Acesse o projeto online:**  
+🔗 *https://luscap3.github.io/Anime-Stream*
+
 Algumas funcionalidades estão incompletas ou sofrer podem alterações.
 
 ---
