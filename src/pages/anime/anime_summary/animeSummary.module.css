@@ -73,9 +73,7 @@
 
     height: fit-content;
 
-
     gap: 10px;
-
 }
 
 .rank-wrapper{
@@ -113,9 +111,12 @@
 }
 
 .genre{
+    text-decoration: none;
     color: var(--text);
 
-    background-color: var(--bg1);
+    background-color: transparent;
+
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 7px;
 
@@ -126,7 +127,13 @@
     min-width: 0;   
     white-space: nowrap;   
     overflow: hidden;         
-    text-overflow: ellipsis;  
+    text-overflow: ellipsis;
+    
+    transition: 0.75s ease;
+}
+
+.genre:hover{
+    background-color: var(--blue);
 }
 
 .score{

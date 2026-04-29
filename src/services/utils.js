@@ -6,3 +6,11 @@ export function strFormat(text) {
 export function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+export function getVideoId(url){
+  const match = url.match(/embed\/([^?]+)/);
+
+  const videoId = match ? match[1] : null;
+
+  return videoId;
+}

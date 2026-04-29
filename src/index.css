@@ -5,12 +5,15 @@
 
   --border: #535557;
   --lightBorder: #676e79;
-  --text: #bfc3c7;
+
+  --text: #caced3;
   --subtext: #9fa2a5;
+
   --purple: #a977b8;
-  --blue: #4855ce;
+  --blue: #445d92;
   --red: #ce4848;
-  --lightGreen: #82c487;
+  --yellow: #dac75c;
+  --green: #82c487;
 
   --borderProgress: 90deg;
 }
@@ -26,15 +29,16 @@ p, h1, h2, h3{
   color: var(--text);
 }
 
-
 .app{
-  padding-left: 5%;
-  padding-right: 5%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
 
 ::-webkit-scrollbar {
   width: 5px; /* width of vertical scrollbar */
-  height: 12px; /* height of horizontal scrollbar */
+  height: 5px; /* height of horizontal scrollbar */
 }
 
 /* Style the track */

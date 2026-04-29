@@ -1,0 +1,34 @@
+.recent-episodes{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.container{
+    max-width: 250px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.episode-info{
+    margin: 0.5em;
+
+    width: 100%;
+    min-width: 0;   
+    white-space: nowrap;   
+    overflow: hidden;         
+    text-overflow: ellipsis; 
+}
+
+.episode-info p{
+    margin: 1px;
+}
+
+.episode-number{
+    margin: 0;
+
+    font-weight: bold;
+    font-size: large;
+}

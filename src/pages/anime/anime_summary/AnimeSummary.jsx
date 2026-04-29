@@ -1,6 +1,8 @@
 import styles from './animeSummary.module.css'
 import * as utils from '../../../services/utils.js'
 
+import { Link } from 'react-router-dom';
+
 function AnimeSummary({anime}){
 
     return (
@@ -11,9 +13,9 @@ function AnimeSummary({anime}){
 
                 <div className = {styles.right}>
                     <header className = {styles.header}>
-                    <h2 className = {[styles.title, styles.t].join(' ')}> {anime.title} </h2>
-                    <p className = {[styles.airing, styles.t].join(' ')} style = { anime.airing ? {'--color': 'var(--lightGreen)'} : {'--color': 'var(--text)'}}> {anime.status} </p>
-                </header>
+                        <h2 className = {[styles.title, styles.t].join(' ')}> {anime.title} </h2>
+                        <p className = {[styles.airing, styles.t].join(' ')} style = { anime.airing ? {'--color': 'var(--green)'} : {'--color': 'var(--text)'}}> {anime.status} </p>
+                    </header>
                 
                     <div className = {styles['row-display']}>
                         { anime.rank && <div className = {styles['rank-wrapper']}> <p className = {[styles.t, styles.rank].join(' ')}>{`#${anime.rank}`}</p> <p className = {styles.t}>Ranking</p></div>}
@@ -33,7 +35,7 @@ function AnimeSummary({anime}){
                 <div className = {styles['genres-container']}>
                     {
                     anime.genres.map( (element, index) => (
-                        <p key = {index} className = {styles.genre}> {element.name} </p>
+                        <Link to = {`/filter?genre=${element.mal_id}`} key = {index} className = {styles.genre}> {element.name} </Link>
                     ))
                     }
                 </div>

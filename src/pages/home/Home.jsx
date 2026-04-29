@@ -1,25 +1,19 @@
 import { useEffect, useState } from "react";
+import { useRef } from "react";
+import { Link } from 'react-router-dom';
 
 import styles from './home.module.css'
 import jikan from '../../services/JikanApi'
 
-import TopCard from "./topCard/TopCard.jsx";
-import Carousel1 from "./carousel/Carousel.jsx"
-import Carousel2 from "../../components/carousel/Carousel.jsx";
-import Card from "../../components/card/Card.jsx";
+import Top10 from "./top/Top10.jsx";
+import RecentEpisodes from "./recent_episodes/RecentEpisodes.jsx";
+import Carousel from '../../components/carousel/Carousel.jsx'
 
 
 function Home(){
-    const [topAnimes, setTopAnimes] = useState(null);
     const [mostPopular, setMostPopular] = useState(null);
 
     useEffect( () => {
-        jikan.getTopAnimes()
-        .then( (res) => {
-            const data = res.data;
-            data.sort((a, b) => a.rank - b.rank);
-            setTopAnimes(data.slice(0,10));
-        });
 
         jikan.getMostPopular()
         .then( (res) => {
@@ -31,23 +25,29 @@ function Home(){
 
 
     return(
-        <div className = {styles.container}>
+        <div className = {styles.home}>
+            <div className = {styles.container}>
 
-            <h1 className = {styles.description}>{'| Top 10'}</h1>
-            <div className = {styles['top-10']}>
-                { topAnimes && 
-                <Carousel1 gap = {15}>
-                    {topAnimes.map( (element, index) => (<TopCard key = {index} anime = {element}/>))}
-                </Carousel1>
-                }
+                <section className = {styles.section}>
+                    <Top10 />
+                </section>
+
+                <section className = {styles.section}>
+                    <p className = {styles.description}> Recent Episodes</p>
+                    <RecentEpisodes />
+                </section>             
+
+                <section className = {styles.section}>
+                    <p className = {styles.description}> Most Popular </p>
+                    <Carousel gap = {20}>
+                        { mostPopular && mostPopular.map( (element, index) => (
+                            <Link to = {`/anime/${element.mal_id}`} style = {{'textDecoration': 'none'}} key = {index} className = {styles['most-popular']}> 
+                                <img src = {element.images.jpg.image_url}/>
+                            </Link>))}
+                    </Carousel>
+                </section>
+
             </div>
-            
-            <h1 className = {styles.description}>{'| Most Popular'}</h1>
-            { mostPopular && 
-                <Carousel2 gap = {15}>
-                    {mostPopular.map( (element, index) => (<Card key = {index} anime = {element}/>))}
-                </Carousel2>
-            }
 
         </ div>
     );

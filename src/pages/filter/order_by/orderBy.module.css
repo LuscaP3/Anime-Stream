@@ -1,0 +1,78 @@
+.order-by{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+}
+
+.options{
+
+}
+
+.options button{
+    margin: 0.125em;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+
+    gap: 0.25em;
+}
+
+.title p{
+    margin: 3px;
+}
+
+.order-button{
+    background-color: var(--bg2);
+    outline: none;
+    border: none;
+
+    border-radius: 2px;
+
+    color: var(--text);
+    transition: 0.25s ease;
+}
+
+.order-button:hover{
+    background-color: var(--bg1);
+}
+
+.pressed-order-button{
+    background-color: var(--blue);
+    outline: none;
+    border: none;
+
+    border-radius: 2px;
+
+    color: var(--text);
+    transition: 0.25s ease;
+}
+
+.sort-button{
+    background-color: transparent;
+    outline: none;
+
+    border: 1px solid var(--border);
+
+    border-radius: 2px;
+
+    color: var(--text);
+    transition: 0.25s ease;
+}
+
+.sort-button:hover{
+    background-color: var(--bg1);
+}
+
+.pressed-sort-button{
+    background-color: transparent;
+    outline: none;
+
+    border: 1px solid var(--blue);
+
+    border-radius: 2px;
+
+    color: var(--text);
+    transition: 0.25s ease;
+}

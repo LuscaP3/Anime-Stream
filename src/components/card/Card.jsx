@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import styles from './card.module.css'
 
 import jikan from '../../services/JikanApi.js'
 
 import * as utils from '../../services/utils.js'
-import { useNavigate } from 'react-router-dom';
 
 function Card({anime}){
     const hovering = useRef(false);
     const title = useRef(null)
     const deg = useRef(90);
-
-    const navigate = useNavigate();
 
     const [animeRef, setAnimeRef] = useState(null);
 
@@ -47,18 +46,18 @@ function Card({anime}){
 
     function getGenres(){
         const genre = animeRef.genres.slice(2);
-        let str = '';
+        const str = [];
         genre.map( (element) => {
-            str += ' ' + element.name;
+            str.push(element.name);
         });
 
-        return str;
+        return str.join(', ');
     }
 
     return(
         <>
         { animeRef &&
-            <button onClick = {() => navigate(`/anime/${animeRef.mal_id}`)} onMouseEnter = {handleMouseEnter} onMouseLeave = {handleMouseLeave} className = {styles.container}>
+             <Link to = {`/anime/${animeRef.mal_id}`} style = {{'textDecoration': 'none', "fontFamily": "Arial"}} onMouseEnter = {handleMouseEnter} onMouseLeave = {handleMouseLeave} className = {styles.container}>
                 <div className = {styles["image-wrapper"]}>
                     <img className = {styles.image} src = {animeRef.images.jpg.image_url}/>
                     <p className = {styles.score}>⭐{animeRef.score}</p>
@@ -81,7 +80,7 @@ function Card({anime}){
                         { (animeRef.genres.length > 2) && <p title={getGenres()}className = {styles.genre}>{`+ ${animeRef.genres.length - 2}`}</p>}
                     </div>
                 </div>
-            </button>
+            </Link>
         }
         </>
     );

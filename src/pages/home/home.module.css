@@ -1,75 +1,52 @@
-.container{
-    width: 100%;
-    height: auto;
+.home{ 
+    margin: 0;
+    padding: 8em;
 }
 
-.top-10{
+.section{
+    margin-bottom: 100px;
+}
+
+.description{
+    background-color: var(--blue);
+    border-radius: 5px;
+
+    font-size: larger;
+
+    padding: 0.25em;
+
+    width: fit-content;
+}
+
+.container{
     display: flex;
-    flex-direction: row;
-    gap: 1em;
+    flex-direction: column;
 
-    height: 500px;
+    height: 100%;
     width: 100%;
-    overflow: hidden;
-
-    transition: transform 0.5s ease;
-    transform: translate( var(--translation),0);
 }
 
 .most-popular{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap; /* ISSO resolve o problema */
-}
+    position: relative;
 
-.container h1{
-    color: var(--text);
-}
+    max-width: 250px;
+    height: 30vh;
 
-.container li:hover{
-    background-color: var(--purple);
-
-    transform: scale(1.5,1.5);
-}
-
-.top{
-    transform: scale(1.5,1.5);
-}
-
-.episodes{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-    align-items: stretch;
-
-    
-}
-
-.cards-container{
-    margin: 0.25em;
-    width: 49%;
-}
-
-.card-wrapper{
-    display: flex;
-    flex-direction: row;
-
-    gap: 1em;
-
+    overflow: hidden;
     border-radius: 10px;
 
-    width: 100%;
+    transition: 0.5s ease;
 }
 
-.card-wrapper:hover{
-    background-color: var(--bg1);
+.most-popular:hover{
+    transform: translate(0, -3%);
 }
 
-.card-image{
+.most-popular img{
     display: block;
 
-    height: fit-content;
-    width: 15%;
-}
+    width: auto;
+    height: 100%;
 
+    border-radius: 0;
+}

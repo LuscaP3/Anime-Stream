@@ -1,12 +1,18 @@
 .container{
     width: 100%;
 
+    box-sizing: border-box;
+    padding: 5em;
+
     display: flex;
     justify-content: center;
 }
 
 .calendar-wrapper{
     width: fit-content;
+
+
+    width: 80%;
 }
 
 .calendar{
@@ -28,7 +34,9 @@
     display: flex;
     flex-direction: column;
 
-    gap: 25px;
+    gap: 20px;
+
+    width: 14.285%;
 }
 
 .weekday{
@@ -39,26 +47,37 @@
     padding: 0.5em;
 }
 
-.card-wrapper{
+.image-wrapper{
+    position: relative;
+
     display: flex;
+    align-self: center;
 
-    margin: 0.5em;
+    width: 90%;
 
-    max-width: 150px;
 
     border-radius: 5px;
-    padding-bottom: 2px;
+    overflow: hidden;
+
+    background-color: var(--blue);
+    border-bottom: 3px solid var(--background);
 
     transition: 0.5s ease;
-
-    background-color: var(--color);
-    box-shadow: 0px 13px 38px -20px #ffffff00;
 }
 
-.card-wrapper:hover{
-    background-color: var(--color);
-    box-shadow: 0px 13px 38px -20px var(--color);
-    transform: translate(0, -10px);
+.image-wrapper:hover{
+    transform: translate(0, -3%);
+    box-shadow: 0px 15px 38px -20px var(--blue);
+    border-bottom: 3px solid var(--blue);
+}
+
+.image-wrapper img{
+    display: block;
+
+    border-radius: 0;
+
+    width: 100%;
+    height: auto;
 }
 
 .top{
@@ -71,7 +90,7 @@
 .navigate{
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 5px;
 
     height: fit-content;
 }
@@ -81,7 +100,8 @@
     align-items: center;
 
     border-radius: 3px;
-    border: none;
+    border: 1px solid var(--border);
+
     outline: none;
     font-size: larger;
 
@@ -91,20 +111,22 @@
     padding-right: 0;
 
     color: var(--text);
-    background-color: var(--bg1);
+    background-color: transparent;
 
-    transition: transform 0.5s ease;
+    transition: 0.5s ease;
 }
 
 .page-button:hover{
     transform: scale(1.2, 1.2);
+    background-color: var(--bg1);
 }
 
 .page{
-    background-color: var(--bg1);
+    background-color: transparent;
 
     border-radius: 5px;
-    border: none;
+    border: 1px solid var(--border);
+
     outline: none;
 
     color: var(--text);
@@ -112,7 +134,7 @@
     padding-left: 10px;
     padding-right: 10px;
 
-    transition: 0.25s ease;
+    transition: 0.5s ease;
 }
 
 .page:hover{

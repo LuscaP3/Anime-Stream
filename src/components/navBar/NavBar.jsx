@@ -1,22 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './navBar.module.css'
 
 import { FiHome, FiFilter, FiTv, FiSearch, FiCalendar } from "react-icons/fi";
+import { useRef, useState } from 'react';
+import SearchBar from '../search_bar/SearchBar';
 
 function NavBar(){
-    return(
-        <div className = {styles.container}>
+    const navigate = useNavigate();
+    const[currentPage, setCurrentPage] = useState('home');
 
-            <Link to = '/' style = {{"textDecoration": "none"}}> <h2 className = {styles.brand}>Anime<span> Stream</span> </h2> </Link>
+    return(
+        <div className = {styles.navbar}>
+
+            <Link to = '/' style = {{'textDecoration': 'none'}}> <h2 className = {styles.brand}>Anime<span> Stream</span> </h2> </Link>
 
             <nav>
-                <Link to = '/' className = {styles.link}> <FiHome/> Home </Link>
-                <Link className = {styles.link}> <FiFilter/> Filter </Link>
-                <Link to = '/calendar' className = {styles.link}> <FiCalendar/> Calendar </Link>
+                <Link to = '/'         className = {styles.link} onClick = { () => setCurrentPage('home')}>      Home     </Link>
+                <Link to = '/filter'   className = {styles.link} onClick = { () => setCurrentPage('filter')}>    Filter   </Link>
+                <Link to = '/calendar' className = {styles.link} onClick = { () => setCurrentPage('calendar')}>  Calendar </Link>
             </nav>
 
-            <div className = {styles.search}><input type="text" placeholder='Search'/> <button> <FiSearch /> </button> </div>
-
+            <div className = {styles['search-wrapper']}> <SearchBar onSearch = {(value) => navigate(`/filter?search=${value}`)}/> </div>
         </div>
     );
 }

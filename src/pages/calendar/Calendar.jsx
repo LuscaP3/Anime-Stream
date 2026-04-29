@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { FiChevronLeft, FiChevronRight  } from "react-icons/fi";
-
+import { Link } from 'react-router-dom';
 import styles from './calendar.module.css';
 
 import jikan from '../../services/JikanApi';
-import MiniCard from '../../components/miniCard/MiniCard';
 
 import { useSearchParams } from 'react-router-dom';
 
@@ -15,7 +14,6 @@ function Calendar(){
     const day = new Date().getDay();
 
     const weekdays = ['Sundays', 'Mondays','Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'];
-    const colors = ['#f7a663', '#f5f763', '#63f779', '#63ebf7', '#ad63f7', '#f563f7', '#f76363'];
 
     const [searchParams, setSearchParams] = useSearchParams();
     const page = Number(searchParams.get("page")) || 1;
@@ -101,12 +99,7 @@ function Calendar(){
                         <h2 className = {styles.weekday}>{weekday}</h2>
                         { currentSeason &&   currentSeason.map( (element, index) => 
                             element.broadcast.day == weekday ? 
-                            <div 
-                                key = {index} 
-                                className = {styles['card-wrapper']} 
-                                style = {{
-                                    '--color': colors[getNumberByWeekDay(element.broadcast.day)]
-                                }}> <MiniCard anime = {element}/> </div>
+                            <Link to = {`/anime/${element.mal_id}`} style = {{'textDecoration': 'none'}} key = {index} className = {styles['image-wrapper']}> <img src = {element.images.jpg.image_url}/> </Link>
                             : '')} 
                     </div>)}                    
                 </div>

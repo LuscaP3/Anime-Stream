@@ -16,7 +16,7 @@ function VideoPlayer({ videoId, onStateChange, onReady }) {
         width: "100%",
         videoId,
         playerVars: {
-          controls: 0,
+          controls: 1,
           rel: 0,
           mute:1,
           autoplay:1,

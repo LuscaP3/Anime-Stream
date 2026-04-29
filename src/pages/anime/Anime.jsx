@@ -23,25 +23,6 @@ function Anime({anime}){
 
     const seasonBuffer = useRef(null);
 
-    useEffect(() => {
-        const observer = new ResizeObserver(([entry]) => {
-            if(episodesRef.current){
-                episodesRef.current.style.height = containerRef.current.offsetHeight  + 'px';
-            }
-
-        });
-
-        if(episodesRef.current){
-            episodesRef.current.style.height = containerRef.current.offsetHeight  + 'px';
-        }
-
-        if (containerRef.current) {
-            observer.observe(containerRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
     
     useEffect( () => {
         setSeasons(null);
@@ -83,39 +64,41 @@ function Anime({anime}){
 
 
     return(
-        <div ref = {containerRef} className =  {styles.container}>
-        { animeRef && <>
-            <div className = {styles.anime}>
-                <AnimeSummary anime = {animeRef}/>
+        <div ref = {containerRef} className =  {styles.anime}>
+            <div className = {styles.container}>
+                { animeRef && <>
+                    <div className = {styles.summary}>
+                        <AnimeSummary anime = {animeRef}/>
 
-                <div className = {styles.carousels}>            
-                    { seasons && <>
-                        <h2 className = {styles.description}>{'| Seasons'}</h2>
-                        <Carousel>
-                            {seasons.map( (element) => <Card key = {element.mal_id} anime = {element}/> )}
-                        </Carousel>
-                    </>}
+                        <div className = {styles.carousels}>            
+                            { seasons && <>
+                                <h2 className = {styles.description}>{'| Seasons'}</h2>
+                                <Carousel>
+                                    {seasons.map( (element) => <Card key = {element.mal_id} anime = {element}/> )}
+                                </Carousel>
+                            </>}
 
-                    { relations && <>
-                        <h2 className = {styles.description}>{'| Relations'}</h2>
-                        <Carousel>
-                            {relations.map( (element, index) =>  <Card key = {index} anime = {element}/> )}
-                        </Carousel>
-                    </>}
-                </div>
+                            { relations && <>
+                                <h2 className = {styles.description}>{'| Relations'}</h2>
+                                <Carousel>
+                                    {relations.map( (element, index) =>  <Card key = {index} anime = {element}/> )}
+                                </Carousel>
+                            </>}
+                        </div>
 
-            </div>
+                    </div>
 
-            <div ref = {episodesRef} className = {styles.episode}>
+                    <div ref = {episodesRef} className = {styles.episode}>
 
-                <h2 className = {styles.description}>{'| Watch'}</h2>
-                { episodes ? 
-                    <div className = {styles['episode-list']}> {episodes.map( (element, index) => <Episode key = {index} episode = {element}/>)} </div> :
-                    <p>*No episodes available</p>
-                }
+                        <h2 className = {styles.description}>{'| Watch'}</h2>
+                        { episodes ? 
+                            <div className = {styles['episode-list']}> {episodes.map( (element, index) => <Episode key = {index} episode = {element}/>)} </div> :
+                            <p>*No episodes available</p>
+                        }
 
-            </div>
-            </>}            
+                    </div>
+                    </>} 
+            </div>           
         </div>    
     );
 }

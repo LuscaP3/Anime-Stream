@@ -34,20 +34,22 @@ class Jikan {
 
 
     async consume(url){
-      //await utils.sleep(this.#rateLimit);
-
       return new Promise((resolve, reject) => {
         this.#queue.push({ url, resolve, reject });
         this.#processQueue();
       });
     }
+
+    clearQueue(){
+      this.#queue = [];
+    }
     
     async getRelations(id){
       const relations = await this.consume(`anime/${id}/relations`);
 
-      let temp = relations.data.filter( (element) => element.relation != 'Sequel' && element.relation != 'Prequel' ); // Remove Sequels e Prequels.
-      const temp2 = temp.map( (element) => element.entry).flat();           // Junta os arrays.
-      const temp3 = temp2.filter( (element) => element.type == 'anime');   // Pega somente anime (sem mangá).
+      let temp = relations.data.filter( (element) => element.relation != 'Sequel' && element.relation != 'Prequel' );
+      const temp2 = temp.map( (element) => element.entry).flat();
+      const temp3 = temp2.filter( (element) => element.type == 'anime'); 
 
       const ids = temp3.map(obj => obj.mal_id);
 
@@ -153,19 +155,75 @@ class Jikan {
       return this.consume('watch/episodes/popular');
     }
 
-    async getEpisodeById(animeId, epsId){
-      let episodesId = epsId
-      if(!Array.isArray(epsId)){
-        episodesId = [epsId];
-      }
-      const episodes = await this.getEpisodes(animeId);
+    async getEpisodeById(animeId, epId){
+      let currentPage = 1
+      let hasNextPage = false;
 
-      let filter = [];
-      for(let id of episodesId){
-        filter = filter.concat(episodes.filter( (element) =>  element.mal_id == id ));
+      do{
+        const page = await this.consume(`anime/${animeId}/videos/episodes?page=${currentPage}`);
+
+        currentPage += 1;
+        hasNextPage = page.pagination.has_next_page;
+
+        const len = page.data.length;
+        for(let i=0; i< len; i++){
+          if(page.data[i].mal_id === epId){
+            return page.data[i];
+          }
+        }
+
       }
-      
-      return filter;
+      while(hasNextPage);
+
+      return null;
+    }
+
+    async getAnimes({search = null, page = null, genres = null, minRate = null, order = null, sort = null, status = null}){
+      const queue = [];
+
+      if(search)  { queue.push(`q=${search}`) }
+      if(page)    { queue.push(`page=${page}`)  }
+      if(genres)  { queue.push(`genres=${genres.join(',')}`) }
+      if(minRate) { queue.push(`min_score=${minRate}`)  }
+      if(order)   { queue.push(`order_by=${order}`)  }
+      if(sort)    { queue.push(`sort=${sort}`) }
+      if(status)  { queue.push(`status=${status}`) }
+
+      return this.consume(`anime?${queue.join('&')}&sfw`);
+    }
+
+    getGenres(){
+      const genres = [{genre: "Shonen", id: 27},        {genre: "Seinen", id: 42},   {genre: "Shoujo", id: 25},       {genre: "School", id: 23}, 
+                      {genre: "Isekai", id: 62},        {genre: "Suspence", id: 41}, {genre: "Supernatural", id: 37}, {genre: "Sports", id: 30},
+                      {genre: "Slice of life", id: 36}, {genre: "Sci-Fi", id: 24},   {genre: "Romance", id: 22},      {genre: "Mistery", id: 7},
+                      {genre: "Horror", id: 14},        {genre: "Fantasy", id: 10},  {genre: "Drama", id: 8},         {genre: "Comedy", id: 4},
+                      {genre: "Award winning", id: 46}, {genre: "Adventure", id: 2}, {genre: "Action", id: 1},        {genre: "Mecha", id: 18}];
+
+      return genres;
+    }
+
+    getGenreName(genreId){
+      const genreList = this.getGenres();
+      const filter = genreList.filter( (element) => element.id == genreId);
+      const result = filter[0].genre;
+
+      return result;
+    }
+
+    getGenreId(genreName){
+      const genreList = this.getGenres();
+      const filter = genreList.filter( (element) => element.genre == genreName);
+      const result = filter[0].id;
+
+      return result;
+    }
+
+    getAnimesByGenre(genre){
+      return this.consume(`anime?genres=${genre}`);
+    }
+
+    getPromos(){
+      return this.consume('watch/promos');
     }
 }
 
